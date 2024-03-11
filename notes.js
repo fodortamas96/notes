@@ -45,4 +45,19 @@ yargs(hideBin(process.argv))
             console.log(`Read note: ${argv.title}`);
         }
     })
+    .command({
+        command: 'delete',
+        description: 'Delete one note by title',
+        builder: {
+            title: {
+                alias: 't',
+                description: 'note title',
+                demand: true,
+                type: 'string'
+            }
+        },
+        handler: (argv) => {
+            console.log(`Delete note: ${argv.title}`);
+        }
+    })
     .parse()
