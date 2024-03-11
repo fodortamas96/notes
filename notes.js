@@ -4,17 +4,17 @@ import { hideBin } from 'yargs/helpers'
 yargs(hideBin(process.argv))
     .command({
         command: 'add',
-        description: 'add new note',
+        description: 'Add new note',
         builder: {
             title: {
                 alias: 't',
-                description: 'note title',
+                description: 'Note title',
                 demand: true,
                 type: 'string'
             },
             body: {
                 alias: 'b',
-                description: 'note body',
+                description: 'Note body',
                 demand: true,
                 type: 'string'
             }
@@ -25,9 +25,24 @@ yargs(hideBin(process.argv))
     })
     .command({
         command: 'list',
-        description:  'list all notes by title',
+        description:  'List all notes',
         handler: () => {
             console.log('Notes listed...');
+        }
+    })
+    .command({
+        command: 'read',
+        description: 'Read one note by title',
+        builder: {
+            title: {
+                alias: 't',
+                description: 'note title',
+                demand: true,
+                type: 'string'
+            }
+        },
+        handler: (argv) => {
+            console.log(`Read note: ${argv.title}`);
         }
     })
     .parse()
