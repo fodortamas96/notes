@@ -1,5 +1,7 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
+import { AddNote } from './src/notes-app.js';
+import { Note } from './src/note.js'
 
 yargs(hideBin(process.argv))
     .command({
@@ -20,7 +22,7 @@ yargs(hideBin(process.argv))
             }
         },
         handler: (argv) => {
-            console.log(`Add note: ${argv.title} ${argv.body}`);
+            AddNote(new Note(argv.title, argv.body));
         }
     })
     .command({
