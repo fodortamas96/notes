@@ -23,4 +23,11 @@ yargs(hideBin(process.argv))
             console.log(`Add note: ${argv.title} ${argv.body}`);
         }
     })
+    .command({
+        command: 'list',
+        description:  'list all notes by title',
+        handler: () => {
+            console.log('Notes listed...');
+        }
+    })
     .parse()
