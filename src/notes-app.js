@@ -24,7 +24,6 @@ async function ReadFromFile() {
 export async function AddNote(note) {
     await ReadFromFile();
     notes.push(note);
-    console.log(notes);
     await writeFile(fileName, JSON.stringify(notes), 'utf-8', () => { });
 }
 
@@ -33,4 +32,18 @@ export async function ListNotes() {
     for (let i = 0; i < notes.length; i++) {
         console.log(notes[i]?.title);
     }
+}
+
+export async function ReadNote(note) {
+    await ReadFromFile();
+
+    const readNote = notes.filter((element) => element.title === note.title);
+    if (readNote.length >= 1) {
+        console.log("----------");
+        console.log(readNote[0]?.body);
+        console.log("----------");
+    } else {
+        console.log("Can't find note with the given title!");
+    }
+    
 }
