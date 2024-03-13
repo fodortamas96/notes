@@ -27,3 +27,10 @@ export async function AddNote(note) {
     console.log(notes);
     await writeFile(fileName, JSON.stringify(notes), 'utf-8', () => { });
 }
+
+export async function ListNotes() {
+    await ReadFromFile();
+    for (let i = 0; i < notes.length; i++) {
+        console.log(notes[i]?.title);
+    }
+}

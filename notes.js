@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { AddNote } from './src/notes-app.js';
+import { AddNote, ListNotes } from './src/notes-app.js';
 import { Note } from './src/note.js'
 
 yargs(hideBin(process.argv))
@@ -29,7 +29,7 @@ yargs(hideBin(process.argv))
         command: 'list',
         description:  'List all notes',
         handler: () => {
-            console.log('Notes listed...');
+            ListNotes();
         }
     })
     .command({
