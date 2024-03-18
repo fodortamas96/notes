@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { AddNote, ListNotes, ReadNote } from './src/notes-app.js';
+import { AddNote, DeleteNote, ListNotes, ReadNote } from './src/notes-app.js';
 import { Note } from './src/note.js'
 
 yargs(hideBin(process.argv))
@@ -59,7 +59,7 @@ yargs(hideBin(process.argv))
             }
         },
         handler: (argv) => {
-            console.log(`Delete note: ${argv.title}`);
+            DeleteNote(argv);
         }
     })
     .parse()

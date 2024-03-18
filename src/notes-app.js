@@ -45,5 +45,17 @@ export async function ReadNote(note) {
     } else {
         console.log("Can't find note with the given title!");
     }
-    
+}
+
+export async function DeleteNote(note) {
+    await ReadFromFile();
+
+    const deleteItemIndex = notes.map(element => element.title).indexOf(note.title);
+    if (deleteItemIndex >= 0) {
+        notes.splice(deleteItemIndex, 1);
+        await writeFile(fileName, JSON.stringify(notes), 'utf-8', () => { });
+        console.log("Note deleted.");
+    } else {
+        console.log("Can't find note with the given title!");
+    }
 }
